@@ -30,15 +30,20 @@ def File2DeckNum(filepath:str):
 
 
 def MakeSheet(filepath:str):
+    print("%sのシート作成を開始します" % filepath)
     deckNum=File2DeckNum(filepath)
     print(deckNum)
+    print("%sのシート作成が完了しました" % filepath)
 
 args=sys.argv
 if len(args) < 2:
     sys.stderr.write("出力するデッキ番号を改行区切りで並べたテキストファイルをドラッグアンドドロップしてください\n")
     exit(1)
 
+print("公式サイトより情報を取得しています...")
 pageContents=GetPageContents()
+print("取得完了しました")
+
 
 for filepath in args[1:]:
     MakeSheet(filepath)
