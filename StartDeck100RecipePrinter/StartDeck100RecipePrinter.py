@@ -33,7 +33,9 @@ def File2DeckNum(filepath:str):
 def GetDeckContents(deckNum, souped:BeautifulSoup):
     targetDeckContentsClass="modal-deck-%s" % deckNum
     deckContents=souped.find("div",class_=targetDeckContentsClass)
-    print(deckContents)
+    title = deckContents.find("h3").text
+
+    print(title)
 
 def MakeSheet(filepath:str, souped:BeautifulSoup):
     print("%sのシート作成を開始します" % filepath)
