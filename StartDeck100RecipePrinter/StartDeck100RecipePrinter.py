@@ -34,8 +34,10 @@ def GetDeckContents(deckNum, souped:BeautifulSoup):
     targetDeckContentsClass="modal-deck-%s" % deckNum
     deckContents=souped.find("div",class_=targetDeckContentsClass)
     title = deckContents.find("h3").text
-
+    desc = deckContents.find("div",class_="lyt-group-content").text.replace(title,"")
+    desc=desc.replace(title,"").replace("\n","")
     print(title)
+    print(desc)
 
 def MakeSheet(filepath:str, souped:BeautifulSoup):
     print("%sのシート作成を開始します" % filepath)
