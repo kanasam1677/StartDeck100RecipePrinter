@@ -21,13 +21,17 @@ def File2DeckNum(filepath:str):
     f=open(filepath, "r")
     text = f.read()
     f.close()
-    print(text)
+    splited=text.split()
+    if len([i for i in splited if not i.isdigit()]) != 0:
+        sys.stderr.write("デッキ番号ファイルに不正な文字が含まれています\n")
+        exit(1)
+    return splited
 
 
 
 def MakeSheet(filepath:str):
     deckNum=File2DeckNum(filepath)
-
+    print(deckNum)
 
 args=sys.argv
 if len(args) < 2:
