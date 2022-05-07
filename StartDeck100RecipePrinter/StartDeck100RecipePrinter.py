@@ -1,6 +1,7 @@
 import sys
 import requests
 from requests.exceptions import Timeout
+from bs4 import BeautifulSoup
 
 
 def GetPageContents():
@@ -14,8 +15,10 @@ def GetPageContents():
     if r.status_code != 200 :
         sys.stderr.write("ページを取得できませんでした\n")
         exit(1)
+    
+    souped=BeautifulSoup(r.text)
 
-    return r.text
+    return souped
 
 def File2DeckNum(filepath:str):
     f=open(filepath, "r")
@@ -27,12 +30,16 @@ def File2DeckNum(filepath:str):
         exit(1)
     return splited
 
+def GetDeckContents(deckNum, souped:BeautifulSoup):
+    targetDeckContentsClass="modal-deck-%s" % deckNum
+    deckContents=souped.find("div",class_=targetDeckContentsClass)
+    print(deckContents)
 
-
-def MakeSheet(filepath:str):
+def MakeSheet(filepath:str, souped:BeautifulSoup):
     print("%sのシート作成を開始します" % filepath)
-    deckNum=File2DeckNum(filepath)
-    print(deckNum)
+    deckNums=File2DeckNum(filepath)
+    for num in deckNums:
+        GetDeckContents(num,souped)
     print("%sのシート作成が完了しました" % filepath)
 
 args=sys.argv
@@ -46,7 +53,7 @@ print("取得完了しました")
 
 
 for filepath in args[1:]:
-    MakeSheet(filepath)
+    MakeSheet(filepath, pageContents)
 
 
 
