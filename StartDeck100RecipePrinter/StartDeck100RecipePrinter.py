@@ -17,8 +17,16 @@ def GetPageContents():
 
     return r.text
 
+def File2DeckNum(filepath:str):
+    f=open(filepath, "r")
+    text = f.read()
+    f.close()
+    print(text)
+
+
+
 def MakeSheet(filepath:str):
-    print(filepath)
+    deckNum=File2DeckNum(filepath)
 
 
 args=sys.argv
