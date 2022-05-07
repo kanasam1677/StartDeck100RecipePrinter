@@ -4,6 +4,9 @@ import requests
 from urllib import parse
 from requests.exceptions import Timeout
 from bs4 import BeautifulSoup
+import dataclasses
+
+from requests.models import stream_decode_response_unicode
 
 tmpImageFolder="./tmpimage/"
 
@@ -58,6 +61,14 @@ def File2DeckNum(filepath:str):
         exit(1)
     return splited
 
+@dataclasses.dataclass(frozen=True)
+class DeckData:
+    deckNum:str
+    title:str
+    description:str
+    cardListFilePath:str
+
+
 def GetDeckContents(deckNum, souped:BeautifulSoup):
     print("デッキ番号%sのデータを取得"%deckNum)
     targetDeckContentsClass="modal-deck-%s" % deckNum
@@ -67,13 +78,15 @@ def GetDeckContents(deckNum, souped:BeautifulSoup):
     desc = desc.replace(title,"").replace("\n","")
     cardList = deckContents.find("div",class_="lyt-group-image").find("img")
     cardListFilePath=GetPicture(cardList["src"])
+    return DeckData(deckNum ,title ,desc ,cardListFilePath)
     
 
 def MakeSheet(filepath:str, souped:BeautifulSoup):
     print("%sのシート作成を開始します" % filepath)
     deckNums=File2DeckNum(filepath)
+    deckList=[]
     for num in deckNums:
-        GetDeckContents(num,souped)
+        deckList.append(GetDeckContents(num,souped))
     print("%sのシート作成が完了しました" % filepath)
 
 args=sys.argv
