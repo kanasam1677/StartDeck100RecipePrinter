@@ -35,7 +35,8 @@ def GetDeckContents(deckNum, souped:BeautifulSoup):
     deckContents=souped.find("div",class_=targetDeckContentsClass)
     title = deckContents.find("h3").text
     desc = deckContents.find("div",class_="lyt-group-content").text.replace(title,"")
-    desc=desc.replace(title,"").replace("\n","")
+    desc = desc.replace(title,"").replace("\n","")
+    cardList = deckContents.find("div",class_="lyt-group-image").find("img")
     print(title)
     print(desc)
 
