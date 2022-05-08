@@ -4,9 +4,8 @@ import requests
 from urllib import parse
 from requests.exceptions import Timeout
 from bs4 import BeautifulSoup
-import dataclasses
 
-from requests.models import stream_decode_response_unicode
+import ReportlabPrint
 
 tmpImageFolder="./tmpimage/"
 
@@ -61,12 +60,7 @@ def File2DeckNum(filepath:str):
         exit(1)
     return splited
 
-@dataclasses.dataclass(frozen=True)
-class DeckData:
-    deckNum:str
-    title:str
-    description:str
-    cardListFilePath:str
+
 
 
 def GetDeckContents(deckNum, souped:BeautifulSoup):
@@ -78,7 +72,7 @@ def GetDeckContents(deckNum, souped:BeautifulSoup):
     desc = desc.replace(title,"").replace("\n","")
     cardList = deckContents.find("div",class_="lyt-group-image").find("img")
     cardListFilePath=GetPicture(cardList["src"])
-    return DeckData(deckNum ,title ,desc ,cardListFilePath)
+    return ReportlabPrint.DeckData(deckNum ,title ,desc ,cardListFilePath)
     
 
 def MakeSheet(filepath:str, souped:BeautifulSoup):
