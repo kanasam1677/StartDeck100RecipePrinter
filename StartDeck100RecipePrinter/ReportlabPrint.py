@@ -22,7 +22,7 @@ def MakeFrames():
     paperSize=portrait(A4)
     margin = ((paperSize[0] - cardSize[0]*cutNum[0])/2,(paperSize[1] - cardSize[1]*cutNum[1])/2)
     frames=[]
-    for y in range(cutNum[1]):
+    for y in reversed(range(cutNum[1])): #左下原点のようだが左上から並べたいので逆順
         for x in range(cutNum[0]):
             frames.append(
                 Frame(margin[0] + cardSize[0]*x,
@@ -68,6 +68,8 @@ def MakePdf(filename:str, dataList:list):
     for ind, data in enumerate(dataList):
         DrawDeckData(flowables, data)
         flowables.append(FrameBreak())
+
+    flowables.pop() #最後につく不要なFrameBreakを削除
 
     doc.multiBuild(flowables)
 
