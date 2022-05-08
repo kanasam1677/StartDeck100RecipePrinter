@@ -81,6 +81,7 @@ def MakeSheet(filepath:str, souped:BeautifulSoup):
     deckList=[]
     for num in deckNums:
         deckList.append(GetDeckContents(num,souped))
+    ReportlabPrint.MakePdf(filepath, deckList)
     print("%sのシート作成が完了しました" % filepath)
 
 args=sys.argv
