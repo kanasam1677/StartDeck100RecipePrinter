@@ -1,6 +1,6 @@
 import dataclasses
 
-#’i‘g‚İ‚ÌQlFhttps://qiita.com/kokardy/items/92e8f3b65c965e20de34
+#æ®µçµ„ã¿ã®å‚è€ƒï¼šhttps://qiita.com/kokardy/items/92e8f3b65c965e20de34
 from reportlab.platypus import BaseDocTemplate, PageTemplate
 from reportlab.platypus import Paragraph, Image, PageBreak, FrameBreak
 from reportlab.platypus.frames import Frame
@@ -18,7 +18,7 @@ class DeckData:
 
 def MakeFrames():
     cutNum = (3,3)
-    cardSize=(62 * mm, 86 * mm) #ÀÛ‚ÌƒJ[ƒhƒTƒCƒY‚Í63x88‚È‚Ì‚Å1ü‚è¬‚³‚­
+    cardSize=(62 * mm, 86 * mm) #å®Ÿéš›ã®ã‚«ãƒ¼ãƒ‰ã‚µã‚¤ã‚ºã¯63x88ãªã®ã§1å‘¨ã‚Šå°ã•ã
     paperSize=portrait(A4)
     margin = ((paperSize[0] - cardSize[0]*cutNum[0])/2,(paperSize[1] - cardSize[1]*cutNum[1])/2)
     frames=[]
@@ -57,7 +57,7 @@ def DrawDeckData(flowables:list, data:DeckData):
 
 def MakePdf(filename:str, dataList:list):
     newPdfName = filename + ".pdf"
-    doc = BaseDocTemplate(newPdfName, pagesize=portrait(A4)) #portrait(A4)‚ÍA4c‚ÌˆÓBlandscape(A4)‚ÅA4‰¡
+    doc = BaseDocTemplate(newPdfName, pagesize=portrait(A4)) #portrait(A4)ã¯A4ç¸¦ã®æ„ã€‚landscape(A4)ã§A4æ¨ª
     pdfmetrics.registerFont(TTFont("GenShinGothicPB", "./fonts/GenShinGothic-P-Bold.ttf"))
     pdfmetrics.registerFont(TTFont("GenShinGothicPN", "./fonts/GenShinGothic-P-Normal.ttf"))
     frames = MakeFrames()
