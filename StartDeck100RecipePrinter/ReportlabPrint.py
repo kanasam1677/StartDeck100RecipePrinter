@@ -37,21 +37,44 @@ def MakeFrames():
 
 
 def DrawDeckData(flowables:list, data:DeckData):
+
+
+    style_dict ={
+        "name":"deckNum",
+        "fontName":"GenShinGothicPN",
+        "fontSize":7,
+        "leading":7,
+        }
+    deckNumStyle = ParagraphStyle(**style_dict)
+
     style_dict ={
         "name":"title",
         "fontName":"GenShinGothicPB",
-        "fontSize":20,
-        "leading":20,
-        "firstLineIndent":20,
+        "fontSize":14,
+        "leading":14,
+        "alignment":1#TA_CENTER,
         }
-    style = ParagraphStyle(**style_dict)
-    para=Paragraph(data.deckNum,style)
+    titleStyle = ParagraphStyle(**style_dict)
+
+    style_dict ={
+        "name":"description",
+        "fontName":"GenShinGothicPN",
+        "fontSize":10,
+        "leading":10,
+        "firstLineIndent":10,
+        }
+    descStyle = ParagraphStyle(**style_dict)
+
+    para=Paragraph(data.deckNum,deckNumStyle)
     flowables.append(para)
-    para=Paragraph(data.title,style)
+
+    para=Paragraph(data.title,titleStyle)
     flowables.append(para)
-    para=Paragraph(data.description,style)
+
+    para=Paragraph(data.description,descStyle)
     flowables.append(para)
-    para=Paragraph(data.cardListFilePath,style)
+
+    para=Paragraph(data.cardListFilePath,deckNumStyle)
     flowables.append(para)
 
 
