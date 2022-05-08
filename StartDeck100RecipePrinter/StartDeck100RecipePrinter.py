@@ -67,6 +67,9 @@ def GetDeckContents(deckNum, souped:BeautifulSoup):
     print("デッキ番号%sのデータを取得"%deckNum)
     targetDeckContentsClass="modal-deck-%s" % deckNum
     deckContents=souped.find("div",class_=targetDeckContentsClass)
+    if deckContents is None:
+        print("デッキ番号%sのデータが見つかりませんでした"%101)
+        exit(1)
     title = deckContents.find("h3").text
     desc = deckContents.find("div",class_="lyt-group-content").text.replace(title,"")
     desc = desc.replace(title,"").replace("\n","")
