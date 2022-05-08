@@ -28,9 +28,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="StartDeck100RecepePrinter_reportlabPrint.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ReportlabPrint.py" />
     <Compile Include="StartDeck100RecipePrinter.py" />
   </ItemGroup>
   <ItemGroup>
