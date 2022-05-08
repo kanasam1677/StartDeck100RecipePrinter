@@ -2,7 +2,8 @@ import dataclasses
 
 #段組みの参考：https://qiita.com/kokardy/items/92e8f3b65c965e20de34
 from reportlab.platypus import BaseDocTemplate, PageTemplate
-from reportlab.platypus import Paragraph, Image, PageBreak, FrameBreak
+from reportlab.platypus import Paragraph, FrameBreak
+from reportlab.platypus.flowables import Image, Spacer
 from reportlab.platypus.frames import Frame
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.pagesizes import A4, portrait ,mm
@@ -74,8 +75,12 @@ def DrawDeckData(flowables:list, data:DeckData):
     para=Paragraph(data.description,descStyle)
     flowables.append(para)
 
-    para=Paragraph(data.cardListFilePath,deckNumStyle)
-    flowables.append(para)
+    space = Spacer(1*mm,1*mm)
+    flowables.append(space)
+
+    fixSize=( 40 * mm, 46 * mm)
+    image = Image(data.cardListFilePath, fixSize[0], fixSize[1])
+    flowables.append(image)
 
 
 def MakePdf(filename:str, dataList:list):
