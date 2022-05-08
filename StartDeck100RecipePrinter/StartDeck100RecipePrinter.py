@@ -21,7 +21,7 @@ def GetPageContents():
         sys.stderr.write("ページを取得できませんでした\n")
         exit(1)
     
-    souped=BeautifulSoup(r.text)
+    souped=BeautifulSoup(r.text, features="html.parser")
 
     return souped
 
