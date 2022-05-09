@@ -58,17 +58,18 @@ def File2DeckNum(filepath:str):
     if len([i for i in splited if not i.isdigit()]) != 0:
         sys.stderr.write("デッキ番号ファイルに不正な文字が含まれています\n")
         exit(1)
-    return splited
+    splited2 = [int(i) for i in splited]
+    return splited2
 
 
 
 
-def GetDeckContents(deckNum, souped:BeautifulSoup):
-    print("デッキ番号%sのデータを取得"%deckNum)
-    targetDeckContentsClass="modal-deck-%s" % deckNum
+def GetDeckContents(deckNum:int, souped:BeautifulSoup):
+    print("デッキ番号%dのデータを取得"%deckNum)
+    targetDeckContentsClass="modal-deck-%d" % deckNum
     deckContents=souped.find("div",class_=targetDeckContentsClass)
     if deckContents is None:
-        print("デッキ番号%sのデータが見つかりませんでした"%101)
+        print("デッキ番号%dのデータが見つかりませんでした"%deckNum)
         exit(1)
     title = deckContents.find("h3").text
     desc = deckContents.find("div",class_="lyt-group-content").text.replace(title,"")

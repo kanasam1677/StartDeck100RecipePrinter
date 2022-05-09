@@ -12,7 +12,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 
 @dataclasses.dataclass(frozen=True)
 class DeckData:
-    deckNum:str
+    deckNum:int
     title:str
     description:str
     cardListFilePath:str
@@ -66,7 +66,7 @@ def DrawDeckData(flowables:list, data:DeckData):
         }
     descStyle = ParagraphStyle(**style_dict)
 
-    para=Paragraph(data.deckNum,deckNumStyle)
+    para=Paragraph(str(data.deckNum),deckNumStyle)
     flowables.append(para)
 
     para=Paragraph(data.title,titleStyle)
@@ -106,16 +106,16 @@ def MakePdf(filename:str, dataList:list):
 
 if __name__ == "__main__":
     testDeckList=[]
-    testDeckList.append(DeckData("11", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("12", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("13", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("21", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("22", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("23", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("31", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("32", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("33", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("41", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("42", "test1", "description", "./tmpimage/test.png"))
-    testDeckList.append(DeckData("43", "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(11, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(12, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(13, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(21, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(22, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(23, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(31, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(32, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(33, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(41, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(42, "test1", "description", "./tmpimage/test.png"))
+    testDeckList.append(DeckData(43, "test1", "description", "./tmpimage/test.png"))
     MakePdf("test.pdf", testDeckList)
