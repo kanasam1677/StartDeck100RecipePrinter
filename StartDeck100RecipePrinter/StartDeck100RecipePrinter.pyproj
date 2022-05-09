@@ -12,6 +12,12 @@
     <Name>StartDeck100RecipePrinter</Name>
     <RootNamespace>StartDeck100RecipePrinter</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterArguments>
+    </InterpreterArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <CommandLineArguments>test.txt test2.txt</CommandLineArguments>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +28,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ReportlabPrint.py" />
     <Compile Include="StartDeck100RecipePrinter.py" />
   </ItemGroup>
   <ItemGroup>
