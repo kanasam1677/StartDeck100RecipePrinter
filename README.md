@@ -5,8 +5,8 @@
 https://www.pokemon-card.com/ex/si/index.html
 
 デッキナンバーを指定すると、そのデッキの説明とカードリストを取得しA4用紙にカードサイズにまとめて印刷します。
-![出力サンプル](/image/img1.PNG)
-![出力物とカードのサイズ比較](/image/img2.JPG)
+<img src="/image/img1.PNG" width="200" alt="出力サンプル">
+<img src="/image/img2.JPG" width="200" alt="出力物とカードのサイズ比較">
 
 # 注意
 
@@ -51,7 +51,8 @@ Adobe Acrobat Readerでの動作を確認しております。
 
 スタートデッキ100のデッキナンバーカードにカードスリーブとともに収めるなどご自由にご活用ください。
 ぴったりサイズのスリーブにも収まります。
-![スリーブにカードとともに収める](/image/img2.JPG)
+
+<img src="/image/img3.JPG" width="200" alt="スリーブにカードとともに収める">
 
 ## うまく動作しないときは
 エラーメッセージを確認するために、コマンドプロンプトやPowerShellから開いてみてください。
