@@ -5,6 +5,7 @@
 https://www.pokemon-card.com/ex/si/index.html
 
 デッキナンバーを指定すると、そのデッキの説明とカードリストを取得しA4用紙にカードサイズにまとめて印刷します。
+
 <img src="/image/img1.PNG" width="200" alt="出力サンプル">
 <img src="/image/img2.JPG" width="200" alt="出力物とカードのサイズ比較">
 
