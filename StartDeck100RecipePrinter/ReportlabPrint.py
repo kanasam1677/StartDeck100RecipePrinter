@@ -43,16 +43,16 @@ def DrawDeckData(flowables:list, data:DeckData):
     style_dict ={
         "name":"deckNum",
         "fontName":"GenShinGothicPN",
-        "fontSize":7,
-        "leading":7,
+        "fontSize":4,
+        "leading":4,
         }
     deckNumStyle = ParagraphStyle(**style_dict)
 
     style_dict ={
         "name":"title",
         "fontName":"GenShinGothicPB",
-        "fontSize":14,
-        "leading":14,
+        "fontSize":12,
+        "leading":12,
         "alignment":1#TA_CENTER,
         }
     titleStyle = ParagraphStyle(**style_dict)
@@ -60,9 +60,9 @@ def DrawDeckData(flowables:list, data:DeckData):
     style_dict ={
         "name":"description",
         "fontName":"GenShinGothicPN",
-        "fontSize":10,
-        "leading":10,
-        "firstLineIndent":10,
+        "fontSize":9,
+        "leading":9,
+        "firstLineIndent":9,
         }
     descStyle = ParagraphStyle(**style_dict)
 
